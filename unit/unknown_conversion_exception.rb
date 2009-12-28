@@ -1,0 +1,1 @@
+class Unit::UnknownConversionException < Exception; end
