@@ -13,10 +13,14 @@ module Unit
     # Reads best with argument:  10.feet.convert_to(unit_of_measurement)
     def convert_to(unit)
       if @conversions.has_key?(unit)
-        return @value * @conversions[unit]
+        return @value * (@conversions[unit].to_f)
       else 
         raise Unit::UnknownConversionException.new("Cannot convert to #{unit}")
       end
+    end
+    
+    def ==(other)
+      return self.value == other
     end
     
   end
