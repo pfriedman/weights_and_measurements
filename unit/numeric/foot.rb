@@ -1,16 +1,14 @@
 module Unit #:nodoc:
   module Numeric #:nodoc:
     module Foot
-      
-      KNOWN_CONVERSIONS = { :inch => 12.0, :inches => 12.0, 
-                            :yard => 1.0/3.0, :yards => 1.0/3.0,
-                            :foot => 1.0, :feet => 1.0 }
+
+      KNOWN_CONVERSIONS = {:inch => 12.0, :inches => 12.0, :in => 12.0}
       
       def feet
-        Unit::Measurement.new(self, KNOWN_CONVERSIONS)
+        Unit::Measurement.new(self, :foot, :inch, KNOWN_CONVERSIONS)
       end
       alias :foot :feet
-      
+      alias :ft :feet
     end
   end
 end
