@@ -31,15 +31,26 @@ module Unit
           raise Unit::UnknownConversionException.new("Cannot convert to #{unit}")
         end
       elsif @unit_name != unit
-        value = @value * @conversions[@base_unit]
-        base = value.send(@base_unit)
+        base = base_value.send(@base_unit)
         base.convert_to(unit)
       end
+    end
+
+    def base_value
+      return @value * @conversions[@base_unit]
     end
 
     # Compare this value with other Measurement value
     def ==(other)
       return self.value == other
+    end
+    
+    def +(other)
+      return self.base_value + other.base_value
+    end
+    
+    def -(other)
+      return self.base_value - other.base_value
     end
     
   end
